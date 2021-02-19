@@ -1,0 +1,32 @@
+<div>
+  <div class="row">
+    <div class="col-8">
+      <canvas #canvas id="canvas" width="1000" height="1000">
+        This text is displayed if your browser does not support HTML5 Canvas.
+      </canvas>
+    </div>
+    <div class="col-4">
+      <h2>My Grilla</h2>
+      <!-- Default inline 1-->
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" class="custom-control-input" id="defaultInline1" name="RB" mdbInput>
+        <label class="custom-control-label" for="defaultInline1">Algoritmo DDA</label>
+      </div>
+
+      <!-- Default inline 2-->
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" class="custom-control-input" id="defaultInline2" name="RB" mdbInput>
+        <label class="custom-control-label" for="defaultInline2">Algoritmo Bresenham</label>
+      </div>
+
+      <!-- Default inline 3-->
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" class="custom-control-input" id="defaultInline3" name="RB" mdbInput>
+        <label class="custom-control-label" for="defaultInline3">To be continued...</label>
+      </div>
+      <div>
+        <input class="btn btn-success" type="limpiar" value="Iniciar/limpiar" (click)="iniciar()">
+      </div>
+    </div>
+  </div>
+</div>
