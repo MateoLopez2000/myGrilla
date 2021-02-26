@@ -1,32 +1,54 @@
 <div>
   <div class="row">
-    <div class="col-8">
+    <div class="col-7">
       <canvas #canvas id="canvas" width="1000" height="1000">
         This text is displayed if your browser does not support HTML5 Canvas.
       </canvas>
     </div>
-    <div class="col-4">
+    <div class="col-4 ">
       <h2>My Grilla</h2>
+      <label for=""><strong>Número de pixeles</strong></label>
+      <input type="number" class="form-control" id="pixeles" value="" />
       <!-- Default inline 1-->
-      <div class="custom-control custom-radio custom-control-inline">
+      <div class="custom-control custom-radio custom-control-inline ">
         <input type="radio" class="custom-control-input" id="defaultInline1" name="RB" mdbInput>
         <label class="custom-control-label" for="defaultInline1">Algoritmo DDA</label>
       </div>
-
+      <div class="custom-control custom-radio custom-control-inline ">
+        <input type="radio" class="custom-control-input" id="defaultInline4" name="RB" mdbInput>
+        <label class="custom-control-label" for="defaultInline4">Algoritmo Bresenham</label>
+      </div>
       <!-- Default inline 2-->
       <div class="custom-control custom-radio custom-control-inline">
         <input type="radio" class="custom-control-input" id="defaultInline2" name="RB" mdbInput>
-        <label class="custom-control-label" for="defaultInline2">Algoritmo Bresenham</label>
+        <label class="custom-control-label" for="defaultInline2">Circunferencia</label>
       </div>
 
       <!-- Default inline 3-->
       <div class="custom-control custom-radio custom-control-inline">
         <input type="radio" class="custom-control-input" id="defaultInline3" name="RB" mdbInput>
-        <label class="custom-control-label" for="defaultInline3">To be continued...</label>
+        <label class="custom-control-label" for="defaultInline3">Elipse</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" class="custom-control-input" id="defaultInline5" name="RB" mdbInput>
+        <label class="custom-control-label" for="defaultInline5">Fill Boundary</label>
       </div>
       <div>
-        <input class="btn btn-success" type="limpiar" value="Iniciar/limpiar" (click)="iniciar()">
+        <label for=""><strong>Color de pixel</strong></label>
+        <input type="text" class="form-control" id="colorPixel" value="" />
+        <div>
+          <input class="btn btn-secondary custom_button" type="limpiar" value="Elegir Color" (click)="colorChosen()">
+        </div>
+
+        <input class="btn btn-success custom_button" type="limpiar" value="Iniciar/limpiar" (click)="iniciar()">
+      </div>
+      <div>
+        <input class="btn btn-primary custom_button" type="zoomIn" value="Zoom In" (click)="ZoomIn()">
+      </div>
+      <div>
+        <input class="btn btn-warning custom_button" type="zoomOut" value="Zoom Out" (click)="ZoomOut()">
       </div>
     </div>
+
   </div>
 </div>
