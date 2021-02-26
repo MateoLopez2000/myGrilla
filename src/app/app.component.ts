@@ -12,6 +12,7 @@ let count: number;
 let positions = new Array();
 let tdp: number;
 let imageData;
+let imageData2;
 var x1;
 var y1;
 var x2;
@@ -61,8 +62,8 @@ export class AppComponent implements OnInit {
     input2 = document.getElementById('colorPixel') as HTMLInputElement;
     this.ctx = this.canvas.nativeElement.getContext('2d');
 
-    canvHeight = ctx.canvas.height;
-    canvWidth = ctx.canvas.width;
+    canvHeight = ctx.canvas.height - 50;
+    canvWidth = ctx.canvas.width - 50;
 
     document.addEventListener('click', onMouseClick);
 
@@ -247,16 +248,15 @@ export class AppComponent implements OnInit {
         return a - (a % tdp);
       }
 
-      function fillBoundary(x, y, oldColor, newColor) {
-        imageData = ctx.getImageData(x, y, tdp, tdp);
-        const currentColor = getColor(ImageData);
+      function fillBoundary(x1, y1, oldColor, newColor) {
+        let x = Number(x1);
+        let y = Number(y1);
 
-        console.log('iteracion ' + iteracion);
+        imageData = ctx.getImageData(x, y, tdp, tdp);
+        const currentColor = getColor(imageData);
 
         if (currentColor == oldColor) {
-          ctx.fillStyle = newColor;
-          ctx.fillRect(x, y, tdp, tdp);
-          iteracion++;
+          ctx.fillRect(aplicarCorreccion(x), aplicarCorreccion(y), tdp, tdp);
 
           fillBoundary(x + tdp, y, oldColor, newColor);
           fillBoundary(x - tdp, y, oldColor, newColor);
@@ -438,8 +438,10 @@ export class AppComponent implements OnInit {
           if (0 < eventY && eventY < canvHeight) {
             imageData = ctx.getImageData(eventX, eventY, tdp, tdp);
             let oldColor = getColor(imageData);
-            console.log(getColor(colorPicked));
-            fillBoundary(eventX, eventY, oldColor, getColor(colorPicked));
+            imageData2 = ctx.getImageData(1000, 0, 50, 50);
+            let colorNew = getColor(imageData2);
+
+            fillBoundary(eventX, eventY, oldColor, colorNew);
           }
         }
       }
@@ -463,6 +465,8 @@ export class AppComponent implements OnInit {
   colorChosen() {
     if (input2.value != '') {
       colorPicked = input2.value;
+      this.ctx.fillStyle = colorPicked;
+      this.ctx.fillRect(1000, 0, 50, 50);
     }
   }
   ZoomIn() {
@@ -477,8 +481,11 @@ export class AppComponent implements OnInit {
   }
 
   drawLines(tdp) {
-    var height = this.ctx.canvas.height;
-    var width = this.ctx.canvas.width;
+    this.ctx.fillStyle = 'White';
+    this.ctx.fillRect(0, 0, 1000, 1000);
+    this.ctx.fillStyle = 'Black';
+    var height = this.ctx.canvas.height - 50;
+    var width = this.ctx.canvas.width - 50;
 
     //loop for columns we iterate over the width and height of the canvas
 
